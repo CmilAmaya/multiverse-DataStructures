@@ -53,16 +53,17 @@ class Vertex:
         return self.name
 
 
-def build_graph(Graph):
-    g = Graph()
+def build_graph(GraphClass):
+    g = GraphClass()
     nodos = ["Pentos", "Winterfell", "Casterly Rock", "Highgarden", "Aguas dulces", "Teusaquillo"]
     for v in nodos:
         g.add_vertex(Vertex(v))
-    x = random.choice(nodos)
-    if x in nodos: 
-        nodos.remove(x)
-    y = random.choice(nodos)
-    g.add_edge(Edge(g.get_vertex(x), g.get_vertex(y)))
+
+    random.shuffle(nodos)  # Ordenar aleatoriamente la lista de nodos
+
+    for i in range(len(nodos) - 1):
+        g.add_edge(Edge(g.get_vertex(nodos[i]), g.get_vertex(nodos[i + 1])))
+
     return g
 
 
