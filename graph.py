@@ -49,23 +49,24 @@ class Vertex:
     def get_name(self):
         return self.name
 
-    def __str__(self):
-        return self.name
 
-
-def build_graph(GraphClass):
-    g = GraphClass()
+def build_graph(Graph):
+    g = Graph()
     nodos = ["Pentos", "Winterfell", "Casterly Rock", "Highgarden", "Aguas dulces", "Teusaquillo"]
+    vertex_names = []
+    
+
     for v in nodos:
         g.add_vertex(Vertex(v))
 
-    random.shuffle(nodos)  # Ordenar aleatoriamente la lista de nodos
-
+    random.shuffle(nodos)
     for i in range(len(nodos) - 1):
+        vertex_names.append(nodos[i])
+        vertex_names.append(nodos[i + 1])
         g.add_edge(Edge(g.get_vertex(nodos[i]), g.get_vertex(nodos[i + 1])))
-
+        
+    print(vertex_names)
     return g
-
 
 G1 = build_graph(DirectedGraph)
 print(G1)
