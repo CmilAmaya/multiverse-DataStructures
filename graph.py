@@ -29,9 +29,6 @@ class DirectedGraph:
             return False , paths
         return True, paths
     
-    def add_new_node(self, Graph):
-        g = Graph() 
-
     def __str__(self):
         all_edges = ""
         for v1 in self.graph_dict:
@@ -39,8 +36,6 @@ class DirectedGraph:
                 all_edges += v1.get_name() + "----->" + v2.get_name() + "\n"
         return all_edges
         
-    
-
 
 class Edge:
     def __init__(self, v1, v2):
@@ -67,7 +62,7 @@ class Vertex:
 
 def build_graph(Graph):
     g = Graph()
-    nodos_str = [str(x) for x in range(1,5)]
+    nodos_str = [str(x) for x in range(1,36)]
     vertex_names = []
     
 
@@ -109,10 +104,12 @@ def add_new_node(nuevo_nodo = input("Nodo a agregar:")):
             str(nodo_final)
     G1.add_vertex(Vertex(nuevo_nodo))
     G1.add_edge(Edge(G1.get_vertex(str(nodo_final)),G1.get_vertex(str(nuevo_nodo))))
-    return f"Nodo {nuevo_nodo} agregado a:\n{G1}"
+    return f"Nodo {nuevo_nodo} agregado a {nodo_final} en el grafo:\n{G1}"
 
 print(add_new_node())
-
+posts = []
+x = posts.append(G1)
+print("arreglo con los nodos:", x)
 
 
 
